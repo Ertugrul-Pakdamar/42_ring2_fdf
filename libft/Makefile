@@ -51,18 +51,26 @@ BONUS_OBJS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+$(NAME): $(OBJS) $(BONUS_OBJS)
+	@echo "libft: Compiling Completed."
+	@echo "libft: Linking $(NAME)..."
+	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	@echo "libft: Linking Completed."
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@echo "libft: Cleaning up..."
+	@rm -f $(OBJS) $(BONUS_OBJS)
+	@echo "libft: Cleaning Completed."
+
 fclean: clean
-	rm -f $(NAME)
+	@echo "libft: Removing $(NAME)..."
+	@rm -f $(NAME)
+	@echo "libft: Removing Completed."
+
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

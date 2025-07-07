@@ -1,35 +1,35 @@
 NAME = fdf
+LIBS = libft/libft.a ft_printf/libftprintf.a
 
 SRCS = main.c \
+		get_next_line/get_next_line_bonus.c \
+		get_next_line/get_next_line_utils_bonus.c \
 		src/ft_draw_pixel.c
-OBJS = main.o \
-		ft_draw_pixel.o
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "Linking $(NAME)..."
-	@ar rcs $(NAME) $(OBJS)
+$(NAME): $(LIBS)
+	@echo "fdf: Compiling $(NAME)..."
+	@cc -Wall -Wextra -Werror $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Ift_printf -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11
 
-$(OBJS): $(SRCS)
-	@echo "Compiling $(NAME)..."
-	@cc -Wall -Wextra -Werror -c $(SRCS) -Iminilibx-linux -Iincludes -Lminilibx-linux -lmlx -lXext -lX11
+$(LIBS): $(OBJS)
+	@echo "fdf: Compiling with libraries..."
+	@make -C libft
+	@make -C ft_printf
 
 clean:
-	@echo "Cleaning up..."
-	@rm -f $(OBJS)
+	@make -C libft fclean
+	@make -C ft_printf fclean
 
 fclean: clean
-	@echo "Removing $(NAME)..."
+	@echo "fdf: Removing $(NAME)..."
 	@rm -f $(NAME)
 
 re: fclean all
 
 # This was for test must be deleted before finishing the project
-test: $(SRCS)
-	@echo "Compiling $(NAME)..."
-	@cc -Wall -Wextra -Werror $(SRCS) -o $(NAME) -Iminilibx-linux -Iincludes -Lminilibx-linux -lmlx -lXext -lX11
-	@echo "Running tests..."
+test: all
+	@echo "fdf: Running tests..."
 	@./$(NAME)
 
 .PHONY: all clean fclean re

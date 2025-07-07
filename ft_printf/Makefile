@@ -1,7 +1,5 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-
 NAME = libftprintf.a
+
 SRCS = ft_printf.c \
 	ft_putstr.c \
 	ft_putchar.c \
@@ -13,12 +11,23 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@echo "ft_printf: Compiling Completed."
+	@echo "ft_printf: Linking $(NAME)..."
+	@ar rcs $(NAME) $(OBJS)
+	@echo "ft_printf: Linking Completed."
+
+$(OBJS): $(SRCS)
+	@echo "ft_printf: Compiling $<..."
+	@cc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	@echo "ft_printf: Cleaning up..."
+	@rm -rf $(OBJS)
+	@echo "ft_printf: Cleaning Completed."
 
 fclean: clean
-	rm -rf $(NAME)
+	@echo "ft_printf: Removing $(NAME)..."
+	@rm -rf $(NAME)
+	@echo "ft_printf: Removing Completed."
 
 re: fclean all

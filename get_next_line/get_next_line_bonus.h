@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:14:27 by epakdama          #+#    #+#             */
-/*   Updated: 2025/06/21 21:32:40 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/07 09:27:21 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 
 #endif
