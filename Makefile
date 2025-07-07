@@ -6,12 +6,13 @@ SRCS = main.c \
 		get_next_line/get_next_line_utils_bonus.c \
 		src/ft_draw_pixel.c \
 		src/ft_3d_point_calc.c \
+		src/ft_get_data.c \
 
 all: $(NAME)
 
-$(NAME): $(LIBS)
+$(NAME): $(LIBS) $(SRCS)
 	@echo "fdf: Compiling $(NAME)..."
-	@cc -Wall -Wextra -Werror $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Ift_printf -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11
+	@cc -Wall -Wextra -Werror $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Ift_printf -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 $(LIBS): $(OBJS)
 	@echo "fdf: Compiling with libraries..."

@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/07 22:35:42 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:20:04 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf.h"
 # include "get_next_line_bonus.h"
 # include "libft.h"
+# include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
 
@@ -34,5 +35,6 @@ typedef struct s_3d_point
 
 void		ft_draw_pixel(void *img, t_2d_point *point, int color);
 t_2d_point	*ft_3d_point_calc(t_3d_point *point);
+char		***ft_get_data(char *file);
 
 #endif

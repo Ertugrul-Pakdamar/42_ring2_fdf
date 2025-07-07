@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/07 22:37:35 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:33:35 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 int	handle_key(int key, void *param)
 {
 	(void)param;
-	if (key == 113)
+	if (key == 65307)
 		exit(0);
 	return (0);
 }
 
+#include <stdio.h>
+
+int	main(void)
+{
+	char	***data;
+
+	data = ft_get_data("test_maps/42.fdf");
+	printf("%s\n", data[10][18]);
+	return (0);
+}
+
+/*
 int	main(void)
 {
 	void		*mlx;
@@ -42,3 +54,4 @@ int	main(void)
 	mlx_loop(mlx);
 	return (0);
 }
+*/
