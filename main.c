@@ -6,12 +6,11 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/07 18:08:09 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/07 22:37:35 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
-#include <mlx.h>
 
 int	handle_key(int key, void *param)
 {
@@ -23,15 +22,22 @@ int	handle_key(int key, void *param)
 
 int	main(void)
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	t_2d_point	*point;
 
+	// Create
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 800, 600, "MiniLibX Test");
 	img = mlx_new_image(mlx, 800, 600);
-	ft_draw_pixel(img, 400, 300, 0x00FF00);
+	// Draw
+	point = (t_2d_point *)malloc(sizeof(t_2d_point));
+	point->x = 400;
+	point->y = 300;
+	ft_draw_pixel(img, point, 0x00FF00);
 	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	// Listen Key
 	mlx_key_hook(win, handle_key, NULL);
 	mlx_loop(mlx);
 	return (0);

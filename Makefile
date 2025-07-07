@@ -4,7 +4,8 @@ LIBS = libft/libft.a ft_printf/libftprintf.a
 SRCS = main.c \
 		get_next_line/get_next_line_bonus.c \
 		get_next_line/get_next_line_utils_bonus.c \
-		src/ft_draw_pixel.c
+		src/ft_draw_pixel.c \
+		src/ft_3d_point_calc.c \
 
 all: $(NAME)
 
@@ -31,5 +32,8 @@ re: fclean all
 test: all
 	@echo "fdf: Running tests..."
 	@./$(NAME)
+val: all
+	@echo "fdf: Running valgrind..."
+	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test val

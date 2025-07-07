@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf.h                                           :+:      :+:    :+:   */
+/*   ft_3d_point_calc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/07 22:35:42 by epakdama         ###   ########.fr       */
+/*   Created: 2025/07/07 22:30:24 by epakdama          #+#    #+#             */
+/*   Updated: 2025/07/07 22:35:34 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FDF_H
-# define FT_FDF_H
+#include "ft_fdf.h"
 
-# include "ft_printf.h"
-# include "get_next_line_bonus.h"
-# include "libft.h"
-# include <math.h>
-# include <mlx.h>
-
-typedef struct s_2d_point
+t_2d_point	*ft_3d_point_calc(t_3d_point *point)
 {
-	int		x;
-	int		y;
-}			t_2d_point;
+	t_2d_point	*res;
 
-typedef struct s_3d_point
-{
-	int		x;
-	int		y;
-	int		z;
-}			t_3d_point;
-
-void		ft_draw_pixel(void *img, t_2d_point *point, int color);
-t_2d_point	*ft_3d_point_calc(t_3d_point *point);
-
-#endif
+	res = (t_2d_point *)malloc(sizeof(t_2d_point));
+	res->x = (point->x - point->y) * cos(point->x);
+	res->y = (point->x + point->y) * sin(point->x) + point->z;
+	return (res);
+}

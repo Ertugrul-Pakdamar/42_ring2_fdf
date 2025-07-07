@@ -58,7 +58,7 @@ $(NAME): $(OBJS) $(BONUS_OBJS)
 	@echo "libft: Linking Completed."
 
 %.o: %.c
-	@echo "Compiling $<..."
+	@echo "libft: Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
