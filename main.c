@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/07 23:33:35 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:23:31 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handle_key(int key, void *param)
 		exit(0);
 	return (0);
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -30,8 +30,8 @@ int	main(void)
 	printf("%s\n", data[10][18]);
 	return (0);
 }
+*/
 
-/*
 int	main(void)
 {
 	void		*mlx;
@@ -52,6 +52,10 @@ int	main(void)
 	// Listen Key
 	mlx_key_hook(win, handle_key, NULL);
 	mlx_loop(mlx);
+	// Exit
+	mlx_destroy_image(mlx, img);
+	mlx_destroy_window(mlx, win);
+	mlx_destroy_display(mlx);
+	free(mlx);
 	return (0);
 }
-*/

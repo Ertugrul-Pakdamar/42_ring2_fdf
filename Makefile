@@ -35,6 +35,9 @@ test: all
 	@./$(NAME)
 val: all
 	@echo "fdf: Running valgrind..."
-	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
+	@- valgrind --leak-check=full --track-origins=yes ./fdf > valgrind 2>&1 ; grep 'main.c' valgrind || echo "main.c kaynaklı hata bulunamadı."
+cls: fclean
+	@echo "fdf: Cleaning up..."
+	@rm -f valgrind
 
-.PHONY: all clean fclean re test val
+.PHONY: all clean fclean re test val cls
