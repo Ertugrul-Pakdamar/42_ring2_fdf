@@ -8,6 +8,7 @@ SRCS = main.c \
 		src/ft_3d_point_calc.c \
 		src/ft_get_data.c \
 		src/ft_read_file.c \
+		src/ft_set_window_len.c \
 
 all: $(NAME)
 

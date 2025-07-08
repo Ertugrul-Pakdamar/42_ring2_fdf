@@ -6,12 +6,11 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/08 23:03:53 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/09 01:09:44 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
-#include <stdio.h>
 
 static void	free_3d_point_array(t_3d_point **map)
 {
@@ -39,19 +38,27 @@ static int	handle_key(int key, t_vars *vars)
 
 int	main(void)
 {
-	t_vars	*vars;
-	int		i;
+	t_vars		*vars;
+	int			width;
+	int			height;
+	int			i;
+	t_2d_point	*point;
 
 	// Create
 	vars = (t_vars *)malloc(sizeof(t_vars));
-	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, 800, 600, "MiniLibX Test");
-	vars->img = mlx_new_image(vars->mlx, 800, 600);
-	// Draw
 	vars->map = ft_get_data("test_maps/42.fdf");
+	ft_set_window_len(vars->map, &width, &height);
+	vars->mlx = mlx_init();
+	vars->win = mlx_new_window(vars->mlx, width, height, "MiniLibX Test");
+	vars->img = mlx_new_image(vars->mlx, width, height);
+	// Draw
 	i = 0;
 	while (vars->map[i] != NULL)
-		printf("%d\n", vars->map[i++]->x);
+	{
+		point = ft_3d_point_calc(vars->map[i], width, height);
+		ft_draw_pixel(vars->img, point, 0x00FF00);
+		i++;
+	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	// Listen Key
 	mlx_key_hook(vars->win, handle_key, vars);

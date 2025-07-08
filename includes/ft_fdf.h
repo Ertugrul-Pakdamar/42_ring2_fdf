@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/08 23:01:03 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/09 01:12:12 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ typedef struct s_vars
 }				t_vars;
 
 void			ft_draw_pixel(void *img, t_2d_point *point, int color);
-t_2d_point		*ft_3d_point_calc(t_3d_point *point);
+t_2d_point		*ft_3d_point_calc(t_3d_point *point, int width, int height);
 char			***ft_read_file(char *file);
 t_3d_point		**ft_get_data(char *file);
+void			ft_set_window_len(t_3d_point **map, int *width, int *height);
 
 #endif

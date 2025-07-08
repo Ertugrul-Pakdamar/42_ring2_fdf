@@ -1,7 +1,5 @@
 TODO:
--	ft_read_file.c: 
-  - Fix get_next_line to properly handle newlines at the end of files.
 - ft_printf/:
   - Maybe you don't need to use this function in your project.
-- ft_get_data.c:
-  - Returning wrong data in this case it must return array with 209 value but only 18 values returned.
+- ft_3d_point_calc.c, ft_set_window.c, ft_get_data.c:
+  - These files are trying to create window in custom size and write in custom size but it is not working.

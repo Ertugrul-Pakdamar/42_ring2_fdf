@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 22:50:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/08 22:54:06 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/09 01:17:03 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ static int	ft_data_len(char ***arr)
 	int	len;
 
 	i = 0;
-	j = 0;
 	len = 0;
-	while (arr[i][j])
+	while (arr[i])
 	{
 		j = 0;
 		while (arr[i][j])
@@ -34,14 +33,14 @@ static int	ft_data_len(char ***arr)
 	return (len);
 }
 
-static t_3d_point	*ft_declare_new_point(int x, int y, char *z)
+static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 {
 	t_3d_point	*new_point;
 
 	new_point = (t_3d_point *)malloc(sizeof(t_3d_point));
-	new_point->x = x;
-	new_point->y = y;
-	new_point->z = ft_atoi(z);
+	new_point->x = x * 5;
+	new_point->y = y * 5;
+	new_point->z = z * 5;
 	return (new_point);
 }
 
@@ -56,12 +55,12 @@ static t_3d_point	**ft_set_data(char ***arr)
 	i = 0;
 	j = 0;
 	len = 0;
-	while (arr[i][j])
+	while (arr[i])
 	{
 		j = 0;
 		while (arr[i][j])
 		{
-			data[len++] = ft_declare_new_point(j, i, arr[i][j]);
+			data[len++] = ft_declare_new_point(j, i, ft_atoi(arr[i][j]));
 			j++;
 		}
 		i++;

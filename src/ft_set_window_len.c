@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_3d_point_calc.c                                 :+:      :+:    :+:   */
+/*   ft_set_window_len.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 22:30:24 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/09 01:17:58 by epakdama         ###   ########.fr       */
+/*   Created: 2025/07/09 01:04:00 by epakdama          #+#    #+#             */
+/*   Updated: 2025/07/09 01:18:26 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
 
-t_2d_point	*ft_3d_point_calc(t_3d_point *point, int width, int height)
+void	ft_set_window_len(t_3d_point **map, int *width, int *height)
 {
-	t_2d_point	*res;
+	int	i;
 
-	(void)width;
-	(void)height;
-	res = (t_2d_point *)malloc(sizeof(t_2d_point));
-	res->x = ((point->y - point->x) * cos(15)) + 50;
-	res->y = ((point->y + point->x) * sin(45) - point->z) - 50;
-	return (res);
+	i = 0;
+	while (map[i])
+	{
+		if (map[i + 1] && map[i + 1]->x == 0)
+			*width = map[i]->x * 15;
+		i++;
+	}
+	*height = i * 15;
 }
