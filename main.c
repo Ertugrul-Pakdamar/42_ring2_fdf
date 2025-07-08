@@ -6,11 +6,12 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/08 22:57:39 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/08 23:03:53 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
+#include <stdio.h>
 
 static void	free_3d_point_array(t_3d_point **map)
 {
