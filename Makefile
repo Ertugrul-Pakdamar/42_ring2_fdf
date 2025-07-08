@@ -7,6 +7,7 @@ SRCS = main.c \
 		src/ft_draw_pixel.c \
 		src/ft_3d_point_calc.c \
 		src/ft_get_data.c \
+		src/ft_read_file.c \
 
 all: $(NAME)
 
@@ -35,7 +36,7 @@ test: all
 	@./$(NAME)
 val: all
 	@echo "fdf: Running valgrind..."
-	@- valgrind --leak-check=full --track-origins=yes ./fdf > valgrind 2>&1 ; grep 'main.c' valgrind || echo "main.c kaynaklı hata bulunamadı."
+	@- valgrind --leak-check=full ./$(NAME)  > valgrind 2>&1 ; awk '/Invalid|uninitialised|LEAK SUMMARY|ERROR SUMMARY/ {p=1} p; /^==[0-9]+== $$/{p=0}' valgrind || echo "Hata tespit edilmedi."
 cls: fclean
 	@echo "fdf: Cleaning up..."
 	@rm -f valgrind

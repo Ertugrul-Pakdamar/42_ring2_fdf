@@ -1,9 +1,5 @@
 TODO:
--	ft_get_data.c: 
+-	ft_read_file.c: 
   - Fix get_next_line to properly handle newlines at the end of files.
-- libft, printf, get_next_line: 
-  - Check norminette rules and ensure compliance.
-- main.c:
-  - Check for memory leaks using Valgrind.
-- minilibx:
-  - Fix leaks in the minilibx library.
+- ft_printf/:
+  - Maybe you don't need to use this function in your project.
