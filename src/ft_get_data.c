@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 22:50:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/09 01:17:03 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:20:51 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 	t_3d_point	*new_point;
 
 	new_point = (t_3d_point *)malloc(sizeof(t_3d_point));
-	new_point->x = x * 5;
-	new_point->y = y * 5;
-	new_point->z = z * 5;
+	new_point->x = x;
+	new_point->y = y;
+	new_point->z = z;
 	return (new_point);
 }
 

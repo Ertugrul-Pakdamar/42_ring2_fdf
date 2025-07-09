@@ -6,19 +6,24 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/09 01:12:12 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:02:45 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FDF_H
 # define FT_FDF_H
 
-# include "ft_printf.h"
 # include "get_next_line_bonus.h"
 # include "libft.h"
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+
+# define DEFAULT_SPACING 50
+# define MIN_SPACING 5
+# define MAX_WIDTH 1280
+# define MAX_HEIGHT 720
+# define PI 3.14159265358979323846
 
 typedef struct s_2d_point
 {
@@ -33,18 +38,31 @@ typedef struct s_3d_point
 	int			z;
 }				t_3d_point;
 
+typedef struct s_bounds
+{
+	int			min_x;
+	int			min_y;
+	int			max_x;
+	int			max_y;
+}				t_bounds;
+
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
 	void		*img;
 	t_3d_point	**map;
+	int			spacing;
+	int			offset_x;
+	int			offset_y;
+	int			width;
+	int			height;
 }				t_vars;
 
-void			ft_draw_pixel(void *img, t_2d_point *point, int color);
-t_2d_point		*ft_3d_point_calc(t_3d_point *point, int width, int height);
+void			ft_draw_pixel(t_vars *vars, t_2d_point *point, int color);
+t_2d_point		*ft_3d_point_calc(t_3d_point *point_3d, t_vars *vars);
 char			***ft_read_file(char *file);
 t_3d_point		**ft_get_data(char *file);
-void			ft_set_window_len(t_3d_point **map, int *width, int *height);
+void			ft_set_window_len(t_vars *vars, int *width, int *height);
 
 #endif

@@ -1,5 +1,5 @@
 NAME = fdf
-LIBS = libft/libft.a ft_printf/libftprintf.a
+LIBS = libft/libft.a
 
 SRCS = main.c \
 		get_next_line/get_next_line_bonus.c \
@@ -14,16 +14,14 @@ all: $(NAME)
 
 $(NAME): $(LIBS) $(SRCS)
 	@echo "fdf: Compiling $(NAME)..."
-	@cc -Wall -Wextra -Werror $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Ift_printf -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
+	@cc -Wall -Wextra -Werror $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 $(LIBS): $(OBJS)
 	@echo "fdf: Compiling with libraries..."
 	@make -C libft
-	@make -C ft_printf
 
 clean:
 	@make -C libft fclean
-	@make -C ft_printf fclean
 
 fclean: clean
 	@echo "fdf: Removing $(NAME)..."
@@ -34,7 +32,7 @@ re: fclean all
 # This was for test must be deleted before finishing the project
 test: all
 	@echo "fdf: Running tests..."
-	@./$(NAME)
+	@./$(NAME) test_maps/42.fdf
 val: all
 	@echo "fdf: Running valgrind..."
 	@- valgrind --leak-check=full ./$(NAME)  > valgrind 2>&1 ; awk '/Invalid|uninitialised|LEAK SUMMARY|ERROR SUMMARY/ {p=1} p; /^==[0-9]+== $$/{p=0}' valgrind || echo "Hata tespit edilmedi."
