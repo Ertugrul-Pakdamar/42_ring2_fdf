@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 22:30:24 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 22:37:41 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 23:04:41 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_2d_point	*ft_3d_point_calc(t_3d_point *point_3d, t_vars *vars)
 	int			a2;
 
 	a1 = 30;
-	a2 = 60;
+	a2 = 30;
 	point_2d = (t_2d_point *)malloc(sizeof(t_2d_point));
 	if (!point_2d)
 		return (NULL);
