@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:54:07 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 22:50:48 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ typedef struct s_2d_map_size
 	int				ordinate_len;
 }					t_2d_map_size;
 
+typedef struct s_line_vars
+{
+	int				dx;
+	int				dy;
+	int				sx;
+	int				sy;
+	int				err;
+	int				e2;
+}					t_line_vars;
+
 typedef struct s_bounds
 {
 	int				min_x;
@@ -77,5 +87,7 @@ void				ft_set_window_len(t_vars *vars, int *width, int *height);
 void				ft_get_map_len(char ***arr, t_vars *vars);
 void				ft_free_3d_matrices(void ***arr);
 void				ft_free_array(void **arr);
+void				ft_draw_line(t_vars *vars, t_2d_point *point_0,
+						t_2d_point *point_1);
 
 #endif

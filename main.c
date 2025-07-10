@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:47:03 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 22:55:17 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,23 @@
 static int	render_next_frame(t_vars *vars)
 {
 	int	i;
+	int	apsis_len;
 
 	mlx_clear_window(vars->mlx, vars->win);
+	apsis_len = vars->map_size->apsis_len;
 	i = 0;
-	while (vars->map_2d[i] != NULL)
+	while (vars->map_2d[i + apsis_len])
 	{
-		ft_draw_pixel(vars, vars->map_2d[i], 0x00FF00);
+		if (vars->map_2d[i + 1] && (i + 1) % apsis_len >= 1)
+			ft_draw_line(vars, vars->map_2d[i], vars->map_2d[i + 1]);
+		if (vars->map_2d[i + apsis_len])
+			ft_draw_line(vars, vars->map_2d[i], vars->map_2d[i + apsis_len]);
+		i++;
+	}
+	while (vars->map_2d[i + 1])
+	{
+		if (vars->map_2d[i + 1] && (i + 1) % apsis_len >= 1)
+			ft_draw_line(vars, vars->map_2d[i], vars->map_2d[i + 1]);
 		i++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
