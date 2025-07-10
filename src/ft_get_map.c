@@ -18,6 +18,8 @@ static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 	t_3d_point	*new_point;
 
 	new_point = (t_3d_point *)malloc(sizeof(t_3d_point));
+	if (!new_point)
+		return (NULL);
 	new_point->x = x;
 	new_point->y = y;
 	new_point->z = z;
@@ -63,6 +65,7 @@ t_2d_point	**ft_3d_to_2d(t_3d_point **data_3d, t_vars *vars)
 		data[i] = ft_3d_point_calc(data_3d[i], vars);
 		i++;
 	}
+	data[i] = NULL;
 	return (data);
 }
 
@@ -73,5 +76,5 @@ void	ft_get_map(char *file, t_vars *vars)
 	arr = ft_read_file(file);
 	ft_get_map_len(arr, vars);
 	vars->map_3d = ft_set_data(arr, vars);
-	ft_free_array(arr);
+	ft_free_3d_matrices((void ***)arr);
 }

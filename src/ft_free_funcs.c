@@ -6,33 +6,24 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:19:16 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:24:15 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:46:51 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
 
-void	ft_free_3d_point_array(t_3d_point **map)
+void	ft_free_array(void **arr)
 {
 	int	i;
 
 	i = 0;
-	while (map && map[i])
-		free(map[i++]);
-	free(map);
+	while (arr[i])
+		free(arr[i++]);
+	if (arr)
+		free(arr);
 }
 
-void	ft_free_2d_point_array(t_2d_point **map)
-{
-	int	i;
-
-	i = 0;
-	while (map && map[i])
-		free(map[i++]);
-	free(map);
-}
-
-void	ft_free_array(char ***arr)
+void	ft_free_3d_matrices(void ***arr)
 {
 	int	i;
 	int	j;

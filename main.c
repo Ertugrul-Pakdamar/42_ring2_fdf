@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:31:49 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:47:03 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ static int	handle_key(int key, t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
-		ft_free_2d_point_array(vars->map_2d);
+		ft_free_array((void **)vars->map_2d);
+		ft_free_array((void **)vars->map_3d);
+		free(vars->map_size);
 		free(vars);
 		exit(0);
 	}

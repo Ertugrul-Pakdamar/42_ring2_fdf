@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:33:24 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:54:07 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void				ft_draw_pixel(t_vars *vars, t_2d_point *point, int color);
 void				ft_get_map(char *file, t_vars *vars);
 void				ft_set_window_len(t_vars *vars, int *width, int *height);
 void				ft_get_map_len(char ***arr, t_vars *vars);
-void				ft_free_3d_point_array(t_3d_point **map);
-void				ft_free_2d_point_array(t_2d_point **map);
-void				ft_free_array(char ***arr);
+void				ft_free_3d_matrices(void ***arr);
+void				ft_free_array(void **arr);
 
 #endif
