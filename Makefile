@@ -9,7 +9,8 @@ SRCS = main.c \
 		src/ft_get_map.c \
 		src/ft_read_file.c \
 		src/ft_set_window_len.c \
-		src/ft_get_map_len.c
+		src/ft_get_map_len.c \
+		src/ft_free_funcs.c
 
 all: $(NAME)
 

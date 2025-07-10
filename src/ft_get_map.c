@@ -11,25 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
-
-static void	ft_free_array(char ***arr)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (!arr)
-		return ;
-	while (arr[i])
-	{
-		j = 0;
-		while (arr[i][j])
-			free(arr[i][j++]);
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
+#include <stdio.h>
 
 static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 {
@@ -68,14 +50,28 @@ static t_3d_point	**ft_set_data(char ***arr, t_vars *vars)
 	return (data);
 }
 
+t_2d_point	**ft_3d_to_2d(t_3d_point **data_3d, t_vars *vars)
+{
+	int			i;
+	t_2d_point	**data;
+
+	data = (t_2d_point **)malloc(sizeof(t_2d_point *) * (vars->map_size->size
+				+ 1));
+	i = 0;
+	while (data_3d[i])
+	{
+		data[i] = ft_3d_point_calc(data_3d[i], vars);
+		i++;
+	}
+	return (data);
+}
+
 void	ft_get_map(char *file, t_vars *vars)
 {
-	char		***arr;
-	t_3d_point	**data_3d;
+	char	***arr;
 
 	arr = ft_read_file(file);
 	ft_get_map_len(arr, vars);
-	data_3d = ft_set_data(arr, vars);
-	vars->map_3d = data_3d;
+	vars->map_3d = ft_set_data(arr, vars);
 	ft_free_array(arr);
 }

@@ -6,34 +6,21 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:08:56 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:31:49 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
 
-static void	free_3d_point_array(t_3d_point **map)
+static int	render_next_frame(t_vars *vars)
 {
 	int	i;
 
-	i = 0;
-	while (map && map[i])
-		free(map[i++]);
-	free(map);
-}
-
-static int	render_next_frame(t_vars *vars)
-{
-	int			i;
-	t_2d_point	*point;
-
 	mlx_clear_window(vars->mlx, vars->win);
 	i = 0;
-	while (vars->map_3d[i] != NULL)
+	while (vars->map_2d[i] != NULL)
 	{
-		point = ft_3d_point_calc(vars->map_3d[i], vars);
-		ft_draw_pixel(vars, point, 0x00FF00);
-		free(point);
+		ft_draw_pixel(vars, vars->map_2d[i], 0x00FF00);
 		i++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
@@ -47,7 +34,7 @@ static int	handle_key(int key, t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
-		free_3d_point_array(vars->map_3d);
+		ft_free_2d_point_array(vars->map_2d);
 		free(vars);
 		exit(0);
 	}
@@ -61,6 +48,7 @@ static void	ft_init_window(t_vars *vars, char *file)
 
 	ft_get_map(file, vars);
 	ft_set_window_len(vars, &width, &height);
+	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
 	vars->width = width;
 	vars->height = height;
 	vars->mlx = mlx_init();
