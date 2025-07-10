@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 18:24:11 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:08:56 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	render_next_frame(t_vars *vars)
 
 	mlx_clear_window(vars->mlx, vars->win);
 	i = 0;
-	while (vars->map[i] != NULL)
+	while (vars->map_3d[i] != NULL)
 	{
-		point = ft_3d_point_calc(vars->map[i], vars);
+		point = ft_3d_point_calc(vars->map_3d[i], vars);
 		ft_draw_pixel(vars, point, 0x00FF00);
 		free(point);
 		i++;
@@ -47,7 +47,7 @@ static int	handle_key(int key, t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
-		free_3d_point_array(vars->map);
+		free_3d_point_array(vars->map_3d);
 		free(vars);
 		exit(0);
 	}
@@ -59,7 +59,7 @@ static void	ft_init_window(t_vars *vars, char *file)
 	int	width;
 	int	height;
 
-	vars->map = ft_get_data(file, vars);
+	ft_get_map(file, vars);
 	ft_set_window_len(vars, &width, &height);
 	vars->width = width;
 	vars->height = height;

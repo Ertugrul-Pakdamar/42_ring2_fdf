@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:11:30 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 17:55:03 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:34:41 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	ft_get_map_bounds(t_vars *vars, t_bounds *bounds, int *width,
 
 	i = 0;
 	ft_init_bounds(bounds);
-	while (vars->map[i])
+	while (vars->map_3d[i])
 	{
-		point = ft_3d_point_calc(vars->map[i], vars);
+		point = ft_3d_point_calc(vars->map_3d[i], vars);
 		ft_update_bounds(bounds, point);
 		free(point);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:21:35 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 18:30:07 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:33:00 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_get_map_len(char ***arr, t_vars *vars)
 		i++;
 	}
 	vars->map_size = (t_2d_map_size *)malloc(sizeof(t_2d_map_size));
-	vars->map_size->map_len = len;
+	vars->map_size->size = len;
 	vars->map_size->apsis_len = j;
 	vars->map_size->ordinate_len = i;
 }

@@ -6,7 +6,7 @@ SRCS = main.c \
 		get_next_line/get_next_line_utils_bonus.c \
 		src/ft_draw_pixel.c \
 		src/ft_3d_point_calc.c \
-		src/ft_get_data.c \
+		src/ft_get_map.c \
 		src/ft_read_file.c \
 		src/ft_set_window_len.c \
 		src/ft_get_map_len.c
@@ -40,5 +40,9 @@ val: all
 cls: fclean
 	@echo "fdf: Cleaning up..."
 	@rm -f valgrind
+norm:
+	@echo "fdf: Running norminette..."
+	@c_formatter_42 $(SRCS)
+	@norminette $(SRCS)
 
 .PHONY: all clean fclean re test val cls
