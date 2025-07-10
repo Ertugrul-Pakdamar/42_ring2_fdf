@@ -16,7 +16,7 @@ $(NAME): $(LIBS) $(SRCS)
 	@echo "fdf: Compiling $(NAME)..."
 	@cc -Wall -Wextra -Werror $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
-$(LIBS): $(OBJS)
+$(LIBS):
 	@echo "fdf: Compiling with libraries..."
 	@make -C libft
 
