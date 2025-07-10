@@ -35,7 +35,7 @@ test: all
 	@./$(NAME) test_maps/42.fdf
 val: all
 	@echo "fdf: Running valgrind..."
-	@- valgrind --leak-check=full ./$(NAME)  > valgrind 2>&1 ; awk '/Invalid|uninitialised|LEAK SUMMARY|ERROR SUMMARY/ {p=1} p; /^==[0-9]+== $$/{p=0}' valgrind || echo "Hata tespit edilmedi."
+	@- valgrind --leak-check=full ./$(NAME) test_maps/42.fdf > valgrind 2>&1 ; awk '/Invalid|uninitialised|LEAK SUMMARY|ERROR SUMMARY/ {p=1} p; /^==[0-9]+== $$/{p=0}' valgrind || echo "Hata tespit edilmedi."
 cls: fclean
 	@echo "fdf: Cleaning up..."
 	@rm -f valgrind
