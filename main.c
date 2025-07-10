@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 18:09:36 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:24:11 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	ft_init_window(t_vars *vars, char *file)
 	int	width;
 	int	height;
 
-	vars->map = ft_get_data(file);
+	vars->map = ft_get_data(file, vars);
 	ft_set_window_len(vars, &width, &height);
 	vars->width = width;
 	vars->height = height;

@@ -6,32 +6,11 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 22:50:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 00:20:51 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:30:21 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
-
-static int	ft_data_len(char ***arr)
-{
-	int	i;
-	int	j;
-	int	len;
-
-	i = 0;
-	len = 0;
-	while (arr[i])
-	{
-		j = 0;
-		while (arr[i][j])
-		{
-			len++;
-			j++;
-		}
-		i++;
-	}
-	return (len);
-}
 
 static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 {
@@ -44,14 +23,16 @@ static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 	return (new_point);
 }
 
-static t_3d_point	**ft_set_data(char ***arr)
+static t_3d_point	**ft_set_data(char ***arr, t_vars *vars)
 {
 	t_3d_point	**data;
 	int			i;
 	int			j;
 	int			len;
 
-	data = (t_3d_point **)malloc(sizeof(t_3d_point *) * (ft_data_len(arr) + 1));
+	ft_get_map_len(arr, vars);
+	data = (t_3d_point **)malloc(sizeof(t_3d_point *) * (vars->map_size->map_len
+				+ 1));
 	i = 0;
 	j = 0;
 	len = 0;
@@ -69,7 +50,7 @@ static t_3d_point	**ft_set_data(char ***arr)
 	return (data);
 }
 
-static void	free_3d_array(char ***arr)
+static void	ft_free_array(char ***arr)
 {
 	int	i;
 	int	j;
@@ -88,13 +69,13 @@ static void	free_3d_array(char ***arr)
 	free(arr);
 }
 
-t_3d_point	**ft_get_data(char *file)
+t_3d_point	**ft_get_data(char *file, t_vars *vars)
 {
 	char		***arr;
-	t_3d_point	**data;
+	t_3d_point	**data_3d;
 
 	arr = ft_read_file(file);
-	data = ft_set_data(arr);
-	free_3d_array(arr);
-	return (data);
+	data_3d = ft_set_data(arr, vars);
+	ft_free_array(arr);
+	return (data_3d);
 }
