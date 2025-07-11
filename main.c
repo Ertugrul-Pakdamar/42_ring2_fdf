@@ -6,13 +6,13 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 22:55:17 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/11 21:23:45 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
 
-static int	render_next_frame(t_vars *vars)
+static int	ft_render_next_frame(t_vars *vars)
 {
 	int	i;
 	int	apsis_len;
@@ -38,7 +38,7 @@ static int	render_next_frame(t_vars *vars)
 	return (0);
 }
 
-static int	handle_key(int key, t_vars *vars)
+static int	ft_handle_key(int key, t_vars *vars)
 {
 	if (key == 65307)
 	{
@@ -78,8 +78,8 @@ int	main(int argc, char *argv[])
 	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
 	ft_init_window(vars, argv[1]);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	mlx_loop_hook(vars->mlx, render_next_frame, vars);
-	mlx_key_hook(vars->win, handle_key, vars);
+	mlx_loop_hook(vars->mlx, ft_render_next_frame, vars);
+	mlx_key_hook(vars->win, ft_handle_key, vars);
 	mlx_loop(vars->mlx);
 	return (0);
 }
