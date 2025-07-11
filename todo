@@ -1,5 +1,6 @@
 TODO:
 - mandotory:
+  - Remove unused headers.
   - Add colors.
   - Make close button functional.
 - bonus:
