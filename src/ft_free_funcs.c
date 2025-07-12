@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:19:16 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 19:46:51 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/12 23:30:56 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,17 @@ void	ft_free_3d_matrices(void ***arr)
 		i++;
 	}
 	free(arr);
+}
+
+int	ft_exit_prog(t_vars *vars)
+{
+	mlx_destroy_image(vars->mlx, vars->img);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	ft_free_array((void **)vars->map_2d);
+	ft_free_array((void **)vars->map_3d);
+	free(vars->map_size);
+	free(vars);
+	exit(0);
+	return (0);
 }

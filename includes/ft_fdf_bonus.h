@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_pixel.c                                    :+:      :+:    :+:   */
+/*   ft_fdf_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 07:05:47 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/12 23:47:31 by epakdama         ###   ########.fr       */
+/*   Created: 2025/07/12 23:23:34 by epakdama          #+#    #+#             */
+/*   Updated: 2025/07/13 00:44:59 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fdf.h"
+#ifndef FT_FDF_BONUS_H
+# define FT_FDF_BONUS_H
 
-void	ft_draw_pixel(t_vars *vars, t_2d_point *point)
-{
-	char	*data;
-	int		bpp;
-	int		sl;
-	int		endian;
+# include "ft_fdf.h"
 
-	if (point->x < 0 || point->y < 0 || point->x >= vars->width
-		|| point->y >= vars->height)
-		return ;
-	data = mlx_get_data_addr(vars->img, &bpp, &sl, &endian);
-	*(int *)(data + point->y * sl + point->x * (bpp / 8)) = vars->color_z;
-}
+int	ft_move_map(int key, t_vars *vars);
+int	ft_rotate_map(int key, t_vars *vars);
+int	ft_key_press(int key, t_vars *vars);
+int	ft_key_release(int key, t_vars *vars);
+int	ft_zoom_map(int key, t_vars *vars);
+
+#endif

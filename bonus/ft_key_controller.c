@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_pixel.c                                    :+:      :+:    :+:   */
+/*   ft_key_controller.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 07:05:47 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/12 23:47:31 by epakdama         ###   ########.fr       */
+/*   Created: 2025/07/13 00:16:08 by epakdama          #+#    #+#             */
+/*   Updated: 2025/07/13 00:22:03 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fdf.h"
+#include "ft_fdf_bonus.h"
 
-void	ft_draw_pixel(t_vars *vars, t_2d_point *point)
+int	ft_key_press(int key, t_vars *vars)
 {
-	char	*data;
-	int		bpp;
-	int		sl;
-	int		endian;
+	vars->key = key;
+	return (0);
+}
 
-	if (point->x < 0 || point->y < 0 || point->x >= vars->width
-		|| point->y >= vars->height)
-		return ;
-	data = mlx_get_data_addr(vars->img, &bpp, &sl, &endian);
-	*(int *)(data + point->y * sl + point->x * (bpp / 8)) = vars->color_z;
+int	ft_key_release(int key, t_vars *vars)
+{
+	(void)key;
+	vars->key = 0;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 22:50:48 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:01:19 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,17 @@ typedef struct s_vars
 	int				width;
 	int				height;
 	t_2d_map_size	*map_size;
+	int				color_z;
+	int				a1;
+	int				a2;
+	int				key;
+	t_bounds		*bounds;
 }					t_vars;
 
 t_2d_point			*ft_3d_point_calc(t_3d_point *point_3d, t_vars *vars);
 t_2d_point			**ft_3d_to_2d(t_3d_point **data_3d, t_vars *vars);
 char				***ft_read_file(char *file);
-void				ft_draw_pixel(t_vars *vars, t_2d_point *point, int color);
+void				ft_draw_pixel(t_vars *vars, t_2d_point *point);
 void				ft_get_map(char *file, t_vars *vars);
 void				ft_set_window_len(t_vars *vars, int *width, int *height);
 void				ft_get_map_len(char ***arr, t_vars *vars);
@@ -89,5 +94,6 @@ void				ft_free_3d_matrices(void ***arr);
 void				ft_free_array(void **arr);
 void				ft_draw_line(t_vars *vars, t_2d_point *point_0,
 						t_2d_point *point_1);
+int					ft_exit_prog(t_vars *vars);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/11 21:23:45 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/13 00:28:32 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	ft_render_next_frame(t_vars *vars)
 	i = 0;
 	while (vars->map_2d[i + apsis_len])
 	{
+		vars->color_z = abs(vars->map_3d[i]->z) * 42 - 62000;
 		if (vars->map_2d[i + 1] && (i + 1) % apsis_len >= 1)
 			ft_draw_line(vars, vars->map_2d[i], vars->map_2d[i + 1]);
 		if (vars->map_2d[i + apsis_len])
@@ -30,6 +31,7 @@ static int	ft_render_next_frame(t_vars *vars)
 	}
 	while (vars->map_2d[i + 1])
 	{
+		vars->color_z = abs(vars->map_3d[i]->z) * 42 - 62000;
 		if (vars->map_2d[i + 1] && (i + 1) % apsis_len >= 1)
 			ft_draw_line(vars, vars->map_2d[i], vars->map_2d[i + 1]);
 		i++;
@@ -38,19 +40,10 @@ static int	ft_render_next_frame(t_vars *vars)
 	return (0);
 }
 
-static int	ft_handle_key(int key, t_vars *vars)
+static int	ft_key_handler(int key, t_vars *vars)
 {
 	if (key == 65307)
-	{
-		mlx_destroy_image(vars->mlx, vars->img);
-		mlx_destroy_window(vars->mlx, vars->win);
-		mlx_destroy_display(vars->mlx);
-		ft_free_array((void **)vars->map_2d);
-		ft_free_array((void **)vars->map_3d);
-		free(vars->map_size);
-		free(vars);
-		exit(0);
-	}
+		ft_exit_prog(vars);
 	return (0);
 }
 
@@ -78,8 +71,9 @@ int	main(int argc, char *argv[])
 	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
 	ft_init_window(vars, argv[1]);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+	mlx_hook(vars->win, 17, 0, ft_exit_prog, vars);
+	mlx_key_hook(vars->win, ft_key_handler, vars);
 	mlx_loop_hook(vars->mlx, ft_render_next_frame, vars);
-	mlx_key_hook(vars->win, ft_handle_key, vars);
 	mlx_loop(vars->mlx);
 	return (0);
 }

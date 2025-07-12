@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 21:48:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/10 22:55:24 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/12 23:50:37 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_draw_loop(t_2d_point tmp_point_0, t_2d_point *point_1,
 	{
 		if (tmp_point_0.x == point_1->x && tmp_point_0.y == point_1->y)
 			break ;
-		ft_draw_pixel(vars, &tmp_point_0, 0x00FF00);
+		ft_draw_pixel(vars, &tmp_point_0);
 		line_var->e2 = 2 * line_var->err;
 		if (line_var->e2 > -line_var->dy)
 		{
