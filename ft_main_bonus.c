@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 00:44:39 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:04:54 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ static int	ft_render_next_frame(t_vars *vars)
 			ft_draw_line(vars, vars->map_2d[i], vars->map_2d[i + 1]);
 		i++;
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	return (0);
+	return (mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0), 0);
 }
 
 static void	ft_init_window(t_vars *vars, char *file)

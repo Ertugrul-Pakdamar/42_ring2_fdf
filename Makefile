@@ -41,20 +41,6 @@ fclean: clean
 	@rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
-
-# This was for test must be deleted before finishing the project
-test: all
-	@echo "fdf: Running tests..."
-	@./$(NAME) test_maps/42.fdf
-val: all
-	@echo "fdf: Running valgrind..."
-	@- valgrind --leak-check=full ./$(NAME) test_maps/42.fdf > valgrind 2>&1 ; awk '/Invalid|uninitialised|LEAK SUMMARY|ERROR SUMMARY/ {p=1} p; /^==[0-9]+== $$/{p=0}' valgrind || echo "Hata tespit edilmedi."
-cls: fclean
-	@echo "fdf: Cleaning up..."
-	@rm -rf valgrind .vscode
-norm:
-	@echo "fdf: Running norminette..."
-	@c_formatter_42 $(SRCS) $(SRC_BONUS)
-	@norminette $(SRCS) $(SRC_BONUS)
+	@echo "fdf: Recompiling all files..."
 
 .PHONY: all bonus clean fclean re test val cls
