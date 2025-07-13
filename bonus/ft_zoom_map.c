@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:41:06 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 12:30:55 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:54:04 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_zoom_map(int key, t_vars *vars)
 		vars->spacing -= 2;
 	else
 		return (0);
+	ft_free_array((void **)vars->map_2d);
 	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
 	mlx_destroy_image(vars->mlx, vars->img);
 	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
