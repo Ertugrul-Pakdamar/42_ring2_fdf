@@ -19,28 +19,31 @@ SRC_BONUS = ft_main_bonus.c \
 		bonus/ft_key_controller.c \
 		bonus/ft_zoom_map.c
 
+
+
+GREEN=\033[0;32m
+SET_DEF=\033[0m
+
 all: $(NAME)
 
 bonus: $(LIBS)
-	@echo "fdf: Compiling bonus files..."
-	@cc -Wall -Wextra -Werror $(SRCS) $(SRC_BONUS) $(LIBS) -o $(BONUS_NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
+	@cc -Wall -Wextra -Werror $(SRCS) $(SRC_BONUS) $(LIBS) -o $(BONUS_NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm && \
+	echo "${GREEN}fdf: Bonus compilation successful!${SET_DEF}"
 
 $(NAME): $(LIBS) $(SRCS) ft_main.c
-	@echo "fdf: Compiling $(NAME)..."
-	@cc -Wall -Wextra -Werror ft_main.c $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
+	@cc -Wall -Wextra -Werror ft_main.c $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm && \
+	echo "${GREEN}fdf: Compilation successful!${SET_DEF}"
 
 $(LIBS):
-	@echo "fdf: Compiling with libraries..."
 	@make -C libft
 
 clean:
 	@make -C libft fclean
 
 fclean: clean
-	@echo "fdf: Removing $(NAME) and $(BONUS_NAME) if exist..."
 	@rm -f $(NAME) $(BONUS_NAME)
+	@echo "${GREEN}fdf: Files Removed${SET_DEF}"
 
 re: fclean all
-	@echo "fdf: Recompiling all files..."
 
 .PHONY: all bonus clean fclean re test val cls

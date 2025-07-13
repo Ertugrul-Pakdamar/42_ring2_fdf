@@ -29,7 +29,6 @@ SRCS = ft_atoi.c \
 	ft_strlcpy.c \
 	ft_strlen.c \
 	ft_strmapi.c \
-	ft_strncmp.c \
 	ft_strnstr.c \
 	ft_strrchr.c \
 	ft_strtrim.c \
@@ -49,27 +48,27 @@ BONUS = ft_lstnew_bonus.c \
 	ft_lstmap_bonus.c
 BONUS_OBJS = $(BONUS:.c=.o)
 
+
+GREEN=\033[0;32m
+SET_DEF=\033[0m
+
 all: $(NAME)
 
 $(NAME): $(OBJS) $(BONUS_OBJS)
-	@echo "libft: Compiling Completed."
-	@echo "libft: Linking $(NAME)..."
-	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-	@echo "libft: Linking Completed."
+	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS) && \
+	echo "${GREEN}libft: Compilation and linking successful!${SET_DEF}"
 
 %.o: %.c
-	@echo "libft: Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "libft: Cleaning up..."
 	@rm -f $(OBJS) $(BONUS_OBJS)
-	@echo "libft: Cleaning Completed."
+	@echo "${GREEN}libft: Cleaning Completed.${SET_DEF}"
 
-fclean: clean
-	@echo "libft: Removing $(NAME)..."
+fclean:
+	@rm -f $(OBJS) $(BONUS_OBJS)
 	@rm -f $(NAME)
-	@echo "libft: Removing Completed."
+	@echo "${GREEN}libft: Removing Completed.${SET_DEF}"
 
 re: fclean all
 
