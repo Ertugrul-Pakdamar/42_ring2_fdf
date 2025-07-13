@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:41:06 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 01:01:13 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:30:55 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_zoom_map(int key, t_vars *vars)
 {
-	if (key == 'u' || key == 'U')
+	if ((key == 'u' || key == 'U') && vars->spacing > 0)
 		vars->spacing += 2;
-	else if (key == 'y' || key == 'Y')
+	else if ((key == 'y' || key == 'Y') && vars->spacing > 2)
 		vars->spacing -= 2;
 	else
 		return (0);

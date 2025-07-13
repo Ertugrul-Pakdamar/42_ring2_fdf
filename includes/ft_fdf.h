@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 01:01:19 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:45:28 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <mlx.h>
 
 # define DEFAULT_SPACING 50
-# define MIN_SPACING 5
+# define MIN_SPACING 1
 # define MAX_WIDTH 1280
 # define MAX_HEIGHT 720
 # define PI 3.14159265358979323846
