@@ -76,10 +76,7 @@ void	ft_get_map(t_vars *vars)
 		ft_map_name_invalid(vars);
 	arr = ft_read_file(vars);
 	if (!arr)
-	{
 		ft_map_not_found(vars);
-		exit(0);
-	}
 	ft_get_map_len(arr, vars);
 	vars->map_3d = ft_set_data(arr, vars);
 	ft_free_3d_matrices((void ***)arr);
