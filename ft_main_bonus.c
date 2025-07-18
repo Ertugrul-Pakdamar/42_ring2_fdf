@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/18 12:50:55 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:16:52 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ static int	ft_render_next_frame(t_vars *vars)
 	return (mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0), 0);
 }
 
-static void	ft_init_window(t_vars *vars, char *file)
+static void	ft_init_window(t_vars *vars)
 {
 	int	width;
 	int	height;
 
-	ft_get_map(file, vars);
+	ft_get_map(vars);
 	ft_set_window_len(vars, &width, &height);
 	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
 	vars->width = width;
@@ -79,7 +79,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
 	vars->file = ft_strdup(argv[1]);
-	ft_init_window(vars, vars->file);
+	ft_init_window(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	mlx_hook(vars->win, DestroyNotify, KeyPressMask, ft_exit_prog, vars);
 	mlx_hook(vars->win, KeyPress, KeyPressMask, ft_key_press, vars);

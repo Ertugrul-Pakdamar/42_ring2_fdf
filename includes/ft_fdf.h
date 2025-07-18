@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/18 20:12:40 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:24:26 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ typedef struct s_vars
 
 t_2d_point			*ft_3d_point_calc(t_3d_point *point_3d, t_vars *vars);
 t_2d_point			**ft_3d_to_2d(t_3d_point **data_3d, t_vars *vars);
-char				***ft_read_file(char *file, t_vars *vars);
+char				***ft_read_file(t_vars *vars);
 void				ft_draw_pixel(t_vars *vars, t_2d_point *point);
-void				ft_get_map(char *file, t_vars *vars);
+void				ft_get_map(t_vars *vars);
 void				ft_set_window_len(t_vars *vars, int *width, int *height);
 void				ft_get_map_len(char ***arr, t_vars *vars);
 void				ft_free_3d_matrices(void ***arr);
@@ -97,6 +97,7 @@ void				ft_free_array(void **arr);
 void				ft_draw_line(t_vars *vars, t_2d_point *point_0,
 						t_2d_point *point_1);
 int					ft_exit_prog(t_vars *vars);
-void				ft_map_not_found(char *file, t_vars *vars);
+void				ft_map_not_found(t_vars *vars);
+void				ft_map_name_invalid(t_vars *vars);
 
 #endif

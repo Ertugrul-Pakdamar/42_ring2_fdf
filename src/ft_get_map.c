@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_fdf.h"
-#include <stdio.h>
 
 static t_3d_point	*ft_declare_new_point(int x, int y, int z)
 {
@@ -69,14 +68,16 @@ t_2d_point	**ft_3d_to_2d(t_3d_point **data_3d, t_vars *vars)
 	return (data);
 }
 
-void	ft_get_map(char *file, t_vars *vars)
+void	ft_get_map(t_vars *vars)
 {
 	char	***arr;
 
-	arr = ft_read_file(file, vars);
+	if (ft_strncmp(&vars->file[ft_strlen(vars->file) - 4], ".fdf", 4))
+		ft_map_name_invalid(vars);
+	arr = ft_read_file(vars);
 	if (!arr)
 	{
-		ft_map_not_found(file, vars);
+		ft_map_not_found(vars);
 		exit(0);
 	}
 	ft_get_map_len(arr, vars);

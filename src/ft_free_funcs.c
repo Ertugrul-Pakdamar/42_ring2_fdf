@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:19:16 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/18 20:12:44 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:24:20 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,16 @@ int	ft_exit_prog(t_vars *vars)
 	return (0);
 }
 
-void	ft_map_not_found(char *file, t_vars *vars)
+void	ft_map_not_found(t_vars *vars)
 {
 	ft_putstr_fd("Error: Map not found: ", 2);
-	ft_putstr_fd(file, 2);
+	ft_putstr_fd(vars->file, 2);
 	ft_putstr_fd("\n", 2);
+	ft_exit_prog(vars);
+}
+
+void	ft_map_name_invalid(t_vars *vars)
+{
+	ft_putstr_fd("Error: Invalid map name. Please use a .fdf file.\n", 2);
 	ft_exit_prog(vars);
 }
