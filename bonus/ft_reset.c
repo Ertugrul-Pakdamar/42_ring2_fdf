@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 12:41:21 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/18 12:52:08 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:35:50 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_reset(int key, t_vars *vars)
 		ft_free_array((void **)vars->map_2d);
 		ft_free_array((void **)vars->map_3d);
 		free(vars->map_size);
-		ft_get_map(vars->file, vars);
+		ft_get_map(vars);
 	}
 	else
 		return (1);
