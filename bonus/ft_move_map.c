@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 23:02:24 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 00:41:56 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:36:55 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,56 +16,68 @@ static void	ft_move_up(t_vars *vars)
 {
 	int	i;
 
-	mlx_destroy_image(vars->mlx, vars->img);
-	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 	i = 0;
-	while (vars->map_2d[i])
+	while (vars->map_3d[i])
 	{
-		vars->map_2d[i]->y -= 2;
+		vars->map_3d[i]->y -= 1;
+		vars->map_3d[i]->x -= 1;
 		i++;
 	}
+	ft_free_array((void **)vars->map_2d);
+	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
+	mlx_destroy_image(vars->mlx, vars->img);
+	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 }
 
 static void	ft_move_down(t_vars *vars)
 {
 	int	i;
 
-	mlx_destroy_image(vars->mlx, vars->img);
-	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 	i = 0;
-	while (vars->map_2d[i])
+	while (vars->map_3d[i])
 	{
-		vars->map_2d[i]->y += 2;
+		vars->map_3d[i]->y += 1;
+		vars->map_3d[i]->x += 1;
 		i++;
 	}
+	ft_free_array((void **)vars->map_2d);
+	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
+	mlx_destroy_image(vars->mlx, vars->img);
+	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 }
 
 static void	ft_move_left(t_vars *vars)
 {
 	int	i;
 
-	mlx_destroy_image(vars->mlx, vars->img);
-	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 	i = 0;
-	while (vars->map_2d[i])
+	while (vars->map_3d[i])
 	{
-		vars->map_2d[i]->x -= 2;
+		vars->map_3d[i]->x -= 1;
+		vars->map_3d[i]->y += 1;
 		i++;
 	}
+	ft_free_array((void **)vars->map_2d);
+	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
+	mlx_destroy_image(vars->mlx, vars->img);
+	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 }
 
 static void	ft_move_right(t_vars *vars)
 {
 	int	i;
 
-	mlx_destroy_image(vars->mlx, vars->img);
-	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 	i = 0;
-	while (vars->map_2d[i])
+	while (vars->map_3d[i])
 	{
-		vars->map_2d[i]->x += 2;
+		vars->map_3d[i]->x += 1;
+		vars->map_3d[i]->y -= 1;
 		i++;
 	}
+	ft_free_array((void **)vars->map_2d);
+	vars->map_2d = ft_3d_to_2d(vars->map_3d, vars);
+	mlx_destroy_image(vars->mlx, vars->img);
+	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 }
 
 int	ft_move_map(int key, t_vars *vars)
