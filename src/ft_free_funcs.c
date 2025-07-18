@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:19:16 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/18 12:49:07 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:12:44 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,24 @@ int	ft_exit_prog(t_vars *vars)
 		mlx_destroy_display(vars->mlx);
 		free(vars->mlx);
 	}
-	ft_free_array((void **)vars->map_2d);
-	ft_free_array((void **)vars->map_3d);
-	free(vars->map_size);
-	free(vars->file);
-	free(vars);
+	if (vars->map_2d)
+		ft_free_array((void **)vars->map_2d);
+	if (vars->map_3d)
+		ft_free_array((void **)vars->map_3d);
+	if (vars->map_size)
+		free(vars->map_size);
+	if (vars->file)
+		free(vars->file);
+	if (vars)
+		free(vars);
 	exit(0);
 	return (0);
+}
+
+void	ft_map_not_found(char *file, t_vars *vars)
+{
+	ft_putstr_fd("Error: Map not found: ", 2);
+	ft_putstr_fd(file, 2);
+	ft_putstr_fd("\n", 2);
+	ft_exit_prog(vars);
 }
