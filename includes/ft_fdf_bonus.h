@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 23:23:34 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 00:44:59 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:47:06 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	ft_rotate_map(int key, t_vars *vars);
 int	ft_key_press(int key, t_vars *vars);
 int	ft_key_release(int key, t_vars *vars);
 int	ft_zoom_map(int key, t_vars *vars);
+int	ft_reset(int key, t_vars *vars);
 
 #endif

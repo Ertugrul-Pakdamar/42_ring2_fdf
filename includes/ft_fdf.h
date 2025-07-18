@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 06:42:02 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 12:45:28 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:45:57 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+# include <mlx_int.h>
 
 # define DEFAULT_SPACING 50
 # define MIN_SPACING 1
@@ -81,6 +82,7 @@ typedef struct s_vars
 	int				a2;
 	int				key;
 	t_bounds		*bounds;
+	char			*file;
 }					t_vars;
 
 t_2d_point			*ft_3d_point_calc(t_3d_point *point_3d, t_vars *vars);

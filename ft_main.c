@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/13 00:28:32 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:45:48 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		return (1);
 	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
-	ft_init_window(vars, argv[1]);
+	vars->file = ft_strdup(argv[1]);
+	ft_init_window(vars, vars->file);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	mlx_hook(vars->win, 17, 0, ft_exit_prog, vars);
+	mlx_hook(vars->win, DestroyNotify, KeyPressMask, ft_exit_prog, vars);
 	mlx_key_hook(vars->win, ft_key_handler, vars);
 	mlx_loop_hook(vars->mlx, ft_render_next_frame, vars);
 	mlx_loop(vars->mlx);

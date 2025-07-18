@@ -17,7 +17,8 @@ SRC_BONUS = ft_main_bonus.c \
 		bonus/ft_move_map.c \
 		bonus/ft_rotate_map.c \
 		bonus/ft_key_controller.c \
-		bonus/ft_zoom_map.c
+		bonus/ft_zoom_map.c \
+		bonus/ft_reset.c
 
 
 
@@ -27,12 +28,12 @@ SET_DEF=\033[0m
 all: $(NAME)
 
 bonus: $(LIBS)
-	@cc -Wall -Wextra -Werror $(SRCS) $(SRC_BONUS) $(LIBS) -o $(BONUS_NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm && \
-	echo "${GREEN}fdf: Bonus compilation successful!${SET_DEF}"
+	@cc -Wall -Wextra -Werror $(SRCS) $(SRC_BONUS) $(LIBS) -o $(BONUS_NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
+	@echo "${GREEN}fdf: Bonus compilation successful!${SET_DEF}"
 
 $(NAME): $(LIBS) $(SRCS) ft_main.c
-	@cc -Wall -Wextra -Werror ft_main.c $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm && \
-	echo "${GREEN}fdf: Compilation successful!${SET_DEF}"
+	@cc -Wall -Wextra -Werror ft_main.c $(SRCS) $(LIBS) -o $(NAME) -Iminilibx-linux -Iincludes -Ilibft -Iget_next_line -Lminilibx-linux -lmlx -lXext -lX11 -lm
+	@echo "${GREEN}fdf: Compilation successful!${SET_DEF}"
 
 $(LIBS):
 	@make -C libft

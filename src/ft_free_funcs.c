@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:19:16 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/16 18:47:02 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:49:07 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	ft_exit_prog(t_vars *vars)
 	ft_free_array((void **)vars->map_2d);
 	ft_free_array((void **)vars->map_3d);
 	free(vars->map_size);
+	free(vars->file);
 	free(vars);
 	exit(0);
 	return (0);
