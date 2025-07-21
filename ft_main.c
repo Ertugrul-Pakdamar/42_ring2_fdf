@@ -6,7 +6,7 @@
 /*   By: epakdama <epakdama@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 07:05:51 by epakdama          #+#    #+#             */
-/*   Updated: 2025/07/18 20:17:05 by epakdama         ###   ########.fr       */
+/*   Updated: 2025/07/21 08:13:09 by epakdama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char *argv[])
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	mlx_hook(vars->win, DestroyNotify, KeyPressMask, ft_exit_prog, vars);
 	mlx_key_hook(vars->win, ft_key_handler, vars);
-	mlx_loop_hook(vars->mlx, ft_render_next_frame, vars);
+	ft_render_next_frame(vars);
 	mlx_loop(vars->mlx);
 	return (0);
 }
