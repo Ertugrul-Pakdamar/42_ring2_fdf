@@ -1,19 +1,19 @@
-# FdF (Fil de Fer) - 3D Wireframe Viewer
+# 🗺️ FdF (Fil de Fer) - 3D Wireframe Viewer
 
-## About The Project
+## 🎯 About The Project
 
 FdF (Fil de Fer) is a 3D wireframe viewer developed as part of the 42 school curriculum. The program takes a map file as input and renders it as a 3D wireframe representation, allowing users to visualize terrain and geometric shapes in a three-dimensional space.
 
-## Features
+## ✨ Features
 
-- 3D wireframe rendering
-- Various map file support
-- Color gradient support
-- Rotation and zoom controls
-- Interactive camera movement
-- Isometric and parallel projection views
+- 🎨 3D wireframe rendering
+- 📄 Various map file support
+- 🌈 Color gradient support
+- 🔄 Rotation and zoom controls
+- 🎮 Interactive camera movement
+- 📐 Isometric and parallel projection views
 
-## Installation
+## 🚀 Installation
 
 ```bash
 # Clone the repository
@@ -24,7 +24,7 @@ cd 42_ring2_fdf
 make
 ```
 
-## Usage
+## 🎮 Usage
 
 ```bash
 # Basic usage
@@ -34,14 +34,14 @@ make
 ./fdf test_maps/[map_file_name].fdf
 ```
 
-### Controls
+### 🕹️ Controls
 
-- **Arrow Keys**: Move the map
-- **Mouse Wheel**: Zoom in/out
-- **R Key**: Reset view
-- **ESC**: Exit program
+- **⬅️➡️⬆️⬇️ Arrow Keys**: Move the map
+- **🖱️ Mouse Wheel**: Zoom in/out
+- **🔄 R Key**: Reset view
+- **❌ ESC**: Exit program
 
-## Map File Format
+## 📝 Map File Format
 
 The program reads map files with the following format:
 ```
@@ -56,13 +56,13 @@ Each number represents a point in 3D space:
 - Position in the grid (x,y)
 - Altitude (z)
 
-## Dependencies
+## 📚 Dependencies
 
-- MinilibX
-- Math Library
-- X11 Library
+- 🖥️ MinilibX
+- 🧮 Math Library
+- 🎨 X11 Library
 
-## Building
+## 🛠️ Building
 
 ```bash
 # Compile mandatory part
