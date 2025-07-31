@@ -3,6 +3,8 @@
 ## 🎯 About The Project
 
 FdF (Fil de Fer) is a 3D wireframe viewer developed as part of the 42 school curriculum. The program takes a map file as input and renders it as a 3D wireframe representation, allowing users to visualize terrain and geometric shapes in a three-dimensional space.
+---
+> 🚧 **Status:** Completed
 
 ## ✨ Features
 
